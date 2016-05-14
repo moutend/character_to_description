@@ -4,7 +4,7 @@ module CharacterToDescription
   class Dictionary
     @description_table = {}
 
-    File.open './descriptions.dic', 'r' do |file|
+    File.open File.expand_path('../../descriptions.dic', __FILE__), 'r' do |file|
       file.each_line do |line|
         next if line.match /^#|^\r\n$/
         fields = line.split "\t"
