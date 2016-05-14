@@ -1,29 +1,30 @@
 # CharacterToDescription
 
-Converting a character into its description.
-This gem currently targets a Japanese character.
+The gem for converting a character into its description.
 
-## Installation
+This gem converts a character into its description by using the dictionary for NVDA, the screen reader for Windows.
+There are many characters that are pronounced as the same in Japanese so that this gem currently targets to Japanese characters.
 
-Add this line to your application's Gemfile:
+## Quick start
 
-```ruby
-gem 'character_to_description'
+Install the gem by the following command:
+
+```shell
+$ gem install character_to_description
 ```
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install character_to_description
-
-## Usage
+Now you can convert a character into its description.
 
 ```ruby
->> require 'character_to_description'
->> puts 'あ'.to_description
+require 'character_to_description'
+
+class String
+  def to_description
+    CharacterToDescription::Dictionary.description self
+  end
+end
+
+puts 'あ'.to_description
 ```
 
 ## Development
