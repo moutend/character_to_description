@@ -34,9 +34,4 @@ module CharacterToDescription
       end
     end
   end
-  refine String do
-    def to_description
-      CharacterToDescription::Dictionary.description self
-    end
-  end
 end
