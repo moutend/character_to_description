@@ -23,13 +23,13 @@ module CharacterToDescription
         when /[A-Z]/
           "Upper case: #{character}"
         when /\p{Hiragana}/
-          "Hiragana letter #{character}"
+          "ひらがなの「#{character}」"
         when /\p{Katakana}/
-          "Katakana letter #{character}"
+          "カタカナの「#{character}」"
         when /[一-龠]/
           @description_table[character]
         else
-          "Unknown"
+          "不明な文字"
         end
       end
     end
