@@ -14,7 +14,7 @@ describe CharacterToDescription do
       end
       context 'given a character' do
         it 'returns its description' do
-          expect(CharacterToDescription::Dictionary.description('あ')).to eql('Hiragana letter あ')
+          expect(CharacterToDescription::Dictionary.description('あ')).to eql('ひらがなの「あ」')
         end
       end
       context 'given a string ' do
