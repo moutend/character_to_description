@@ -23,6 +23,13 @@ end
 puts 'あ'.to_description #=> ひらがなの「あ」
 ```
 
+If you want to overwrite the built-in dictionary, you can modify `CharacterToDescription.user_dictionary`.
+
+```ruby
+CharacterToDescription.user_dictionary['あ'] = 'Hiragana letter'
+p 'あ'.to_description #=> "Hiragana letter"
+```
+
 ## Development
 
 After checking out the repository, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
