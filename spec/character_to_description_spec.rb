@@ -5,22 +5,36 @@ describe CharacterToDescription do
     expect(CharacterToDescription::VERSION).not_to be nil
   end
 
-  describe CharacterToDescription::Dictionary do
-    describe '.description' do
-      context 'given an empty string' do
-        it 'returns nil' do
-          expect(CharacterToDescription::Dictionary.description('')).to eql(nil)
-        end
+  String.send :include, CharacterToDescription
+
+  it 'has an alias method for #to_description' do
+    expect('string'.respond_to? :to_d).to eql(true)
+  end
+
+  describe '#to_description' do
+    context 'given an empty character' do
+      description_for_unknown_character = CharacterToDescription::DESCRIPTION_FOR_UNKNOWN
+      it "returns #{description_for_unknown_character}" do
+        expect(''.to_d).to eql(description_for_unknown_character)
       end
-      context 'given a character' do
-        it 'returns its description' do
-          expect(CharacterToDescription::Dictionary.description('あ')).to eql('ひらがなの「あ」')
-        end
+    end
+
+    context 'given a character' do
+      it 'returns its description' do
+        expect('あ'.to_d).to eql("ひらがなの「あ」")
       end
-      context 'given a string ' do
-        it 'returns the description of its first letter' do
-          expect(CharacterToDescription::Dictionary.description('言語')).to eql('ゲンゴガクノ ゲン')
-        end
+    end
+
+    context 'given a string' do
+      it 'returns a description of a first letter' do
+        expect('あいうえお'.to_d).to eql("ひらがなの「あ」")
+      end
+    end
+
+    context 'overwrite athe user dictionary' do
+      it 'returns new description' do
+        CharacterToDescription.user_dictionary['あ'] = 'Hiragana letter'
+        expect('あ'.to_d).to eql('Hiragana letter')
       end
     end
   end

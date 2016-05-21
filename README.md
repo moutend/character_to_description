@@ -1,11 +1,9 @@
 # CharacterToDescription
 
-The gem for converting a character into its description.
-
-This gem converts a character into its description by using the dictionary for NVDA, the screen reader for Windows.
+This gem converts a Japanese character into its description by using the dictionary for NVDA, the screen reader for Windows.
 There are many characters that are pronounced as the same in Japanese so that this gem currently targets to Japanese characters.
 
-## Quick start
+## Usage
 
 Install the gem by the following command:
 
@@ -19,12 +17,10 @@ Now you can convert a character into its description.
 require 'character_to_description'
 
 class String
-  def to_description
-    CharacterToDescription::Dictionary.description self
-  end
+  include CharacterToDescription
 end
 
-puts 'あ'.to_description
+puts 'あ'.to_description #=> ひらがなの「あ」
 ```
 
 ## Development
